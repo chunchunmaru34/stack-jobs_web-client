@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -13,26 +15,26 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name].js',
-        chunkFilename: '[chunkhash].js'
+        filename: '[name]_[hash].js',
+        chunkFilename: '[chunkhash].js',
     },
     devtool: 'source-map',
     mode: process.env.NODE_ENV || 'development',
     module: {
         rules: [
-            { 
-                test: /\.tsx?$/, 
+            {
+                test: /\.tsx?$/,
                 exclude: '/node_modules/',
                 use: [
                     {
-                        loader: 'ts-loader'
-                    }
+                        loader: 'ts-loader',
+                    },
                 ],
-            }
-        ]
+            },
+        ],
     },
     resolve: {
-        extensions: ['.js', '.ts', '.jsx', '.tsx']
+        extensions: ['.js', '.ts', '.jsx', '.tsx'],
     },
     optimization: {
         // splitChunks: {
@@ -41,7 +43,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './template.html'
+            template: './template.html',
         }),
-    ]
-}
+        new DotenvPlugin(),
+        new CleanWebpackPlugin(),
+    ],
+};
