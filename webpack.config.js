@@ -15,7 +15,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name]_[hash].js',
+        filename: '[name]_[chunkhash].js',
         chunkFilename: '[chunkhash].js',
     },
     devtool: 'source-map',
@@ -31,10 +31,14 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader',]
+            }
         ],
     },
     resolve: {
-        extensions: ['.js', '.ts', '.jsx', '.tsx'],
+        extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
     },
     optimization: {
         // splitChunks: {
