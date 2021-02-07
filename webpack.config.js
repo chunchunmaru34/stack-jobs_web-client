@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -33,11 +34,12 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader',]
-            }
+                use: ['style-loader', 'css-loader'],
+            },
         ],
     },
     resolve: {
+        plugins: [new TsconfigPathsPlugin()],
         extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
     },
     optimization: {

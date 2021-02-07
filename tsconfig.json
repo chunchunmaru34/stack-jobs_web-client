@@ -3,18 +3,27 @@
         "target": "es2020",
         "lib": ["dom", "dom.iterable", "esnext"],
         "sourceMap": true,
+
+        "strict": true,
+        "module": "es2020",
+        "moduleResolution": "node",
+        "jsx": "react-jsx",
+
+        "baseUrl": "src",
+        "paths": {
+            "@services/*": ["./services/*"],
+            "@models/*": ["./models/*"],
+            "@interfaces/*": ["./interfaces/*"]
+        },
+
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
-        "module": "es2020",
-        "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "react-jsx"
+        "isolatedModules": true
     },
     "include": ["src"],
     "exclude": ["node_modules"]

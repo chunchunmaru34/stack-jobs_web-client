@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN ?? '';
 
-import { App } from './App';
+import { App } from './components/App/App';
 
 ReactDOM.render(
     <React.StrictMode>
