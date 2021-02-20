@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Button, Link, Typography } from '@material-ui/core';
 
 import { IJobCard } from '@interfaces/index';
 
 type JobDetailsPanelProps = {
     job: IJobCard;
+    onClose: () => void;
 };
 
 const styles: React.CSSProperties = {
@@ -17,10 +19,15 @@ const styles: React.CSSProperties = {
     display: 'flex',
 };
 
-export const JobDetailsPanel = ({ job }: JobDetailsPanelProps) => {
+export const JobDetailsPanel = ({ job, onClose }: JobDetailsPanelProps) => {
     return ReactDOM.createPortal(
         <div style={styles}>
-            <h2>{job.jobTitle}</h2>
+            <Typography variant="h2" component="h2">
+                <Link href={job.detailUrl} target="_blank">
+                    {job.jobTitle}
+                </Link>
+            </Typography>
+            <Button onClick={onClose}>Close</Button>
         </div>,
         document.body
     );

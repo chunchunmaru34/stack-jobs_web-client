@@ -14,9 +14,23 @@ export interface IJobCard {
 }
 
 export interface JobPoint {
-    coordinates: {
-        lng: number;
-        lat: number;
-    };
+    coordinates: Coordinates;
     jobs: IJobCard[];
 }
+
+export interface IFunctor<T> {
+    map<TResult>(fn: (val: T) => TResult): IFunctor<TResult | null | undefined>;
+}
+
+export interface IMapFilters {
+    technologies?: string[];
+}
+
+export type LocationJobDict = { [key: string]: IJobCard[] };
+
+export type Coordinates = {
+    lng: number;
+    lat: number;
+};
+
+export type CityCoordinatesMap = { [key: string]: Coordinates };

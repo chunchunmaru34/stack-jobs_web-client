@@ -3,8 +3,8 @@ body {
 }
 
 * {
+    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 iframe {
@@ -32,15 +32,12 @@ iframe {
     transform: rotateZ(135deg);
 }
 
-.jobs-popup__job-list {
-    max-height: 40vh;
-    overflow: auto;
-}
-
-.jobs-popup__job-list__item {
+.jobs-popup .job-list__item {
     padding: 0.5em;
 }
 
 .jobs-popup {
     padding: 0;
+    max-height: 40em;
+    overflow: auto;
 }

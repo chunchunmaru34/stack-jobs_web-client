@@ -1,0 +1,44 @@
+.popup {
+    position: absolute;
+    z-index: 2;
+
+    min-height: 20em;
+    min-width: 15em;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+}
+
+.popup__body {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.popup__body.MuiCardContent-root:last-child {
+    padding-bottom: 16px;
+}
+
+.popup__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup__header .close-button {
+    position: absolute;
+    top: 0.125em;
+    right: 0.125em;
+}
+
+.popup__content {
+    flex: 1;
+}
+
+.popup__footer {
+    display: flex;
+    margin-top: 0.5em;
+}

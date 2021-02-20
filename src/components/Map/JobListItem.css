@@ -1,14 +1,14 @@
-.jobs-popup__job-list__item {
+.job-list__item {
 }
 
-.jobs-popup__job-list__item h3 {
+.job-list__item h3 {
     margin: 0 0 0.25em 0;
 }
 
-.jobs-popup__job-list__item__perks > span:not(:last-child) {
+.job-list__item__perks > span:not(:last-child) {
     margin-right: 0.5em;
 }
 
-.jobs-popup__job-list__details > div:not(:last-child) {
+.job-list__details > div:not(:last-child) {
     margin-bottom: 0.25em;
 }

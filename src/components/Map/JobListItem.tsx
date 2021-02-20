@@ -9,7 +9,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     container: {
         display: 'flex',
         flexWrap: 'nowrap',
-        borderBottom: '1px solid gray',
     },
     image: {
         height: '3em',
@@ -17,6 +16,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     imageContainer: {
         width: '3em',
         marginRight: '0.5em',
+        overflow: 'hidden',
     },
     technology: {
         backgroundColor: 'cadetblue',
@@ -40,15 +40,11 @@ export const JobListItem = ({
     job: IJobCard;
     onClick: (job: IJobCard) => void;
 }) => (
-    <div
-        className="jobs-popup__job-list__item"
-        style={styles.container}
-        onClick={() => onClick(job)}
-    >
+    <div className="job-list__item" style={styles.container} onClick={() => onClick(job)}>
         <div style={styles.imageContainer}>
             <img style={styles.image} src={job.imageUrl}></img>
         </div>
-        <div style={styles.details} className="jobs-popup__job-list__details">
+        <div style={styles.details} className="job-list__details">
             <div style={styles.jobTitle}>
                 <h3>{job.jobTitle}</h3>
             </div>
@@ -60,7 +56,7 @@ export const JobListItem = ({
                     </div>
                 ))}
             </div>
-            <div className="jobs-popup__job-list__item__perks">
+            <div className="job-list__item__perks">
                 <Conditional showIf={!!job.salary}>
                     <span>{job.salary}</span>
                 </Conditional>
