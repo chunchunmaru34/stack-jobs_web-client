@@ -9,15 +9,20 @@ const useStylesSelect = makeStyles({
     chip: {
         margin: 2,
     },
+    input: {
+        width: '100%',
+    },
 });
 
 export const TechSelect = ({
     value = [],
     options,
+    className = '',
     onChange,
 }: {
     value?: string[];
     options: string[];
+    className?: string;
     onChange: (value: string[]) => void;
 }) => {
     const classes = useStylesSelect();
@@ -30,12 +35,12 @@ export const TechSelect = ({
 
     return (
         <Autocomplete
-            id="combo-box-demo"
+            id="tech-select-filter"
+            className={`${classes.input} ${className}`}
             multiple
             value={value}
             options={options}
             getOptionLabel={(option) => option}
-            style={{ width: 300, marginTop: '1em' }}
             renderInput={(params) => (
                 <TextField {...params} label="Technologies" variant="outlined" />
             )}

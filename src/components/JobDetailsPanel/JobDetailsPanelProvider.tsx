@@ -1,9 +1,9 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { IJobCard } from '@interfaces/index';
+import { Maybe } from '@models/Maybe';
 
 import { JobDetailsPanel } from './JobDetailsPanel';
-import { Maybe } from '@models/Maybe';
 
 type JobDetailsPanelContextValue = {
     selectedJob: Maybe<IJobCard>;

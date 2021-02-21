@@ -5,13 +5,14 @@ import { curry } from 'ramda';
 import { IMapFilters } from '@interfaces/index';
 import { Popup } from '../../Popup/Popup';
 
-import { TechSelect } from './Controls';
+import { JobTitleControl, TechSelect } from './Controls';
 
 type PopupProps = {
     filters: IMapFilters;
     options: { locations: string[]; technologies: string[] };
     onClose: () => void;
     onApply: (filters: IMapFilters) => void;
+    onReset: () => void;
 };
 
 const popupPosition = {
@@ -20,13 +21,28 @@ const popupPosition = {
 };
 
 const useStylesPopup = makeStyles({
+    container: {
+        width: '25em',
+    },
     footer: {
         justifyContent: 'flex-end',
     },
+    content: {
+        '& > *': {
+            marginTop: '1em',
+        },
+    },
 });
 
-export const FiltersPopup = ({ filters: filtersOuter, options, onClose, onApply }: PopupProps) => {
+export const FiltersPopup = ({
+    filters: filtersOuter,
+    options,
+    onClose,
+    onApply,
+    onReset,
+}: PopupProps) => {
     const [filters, setFilters] = useState<IMapFilters>(filtersOuter);
+    const hasFilters = !!Object.keys(filters).length;
 
     const styles = useStylesPopup();
 
@@ -37,14 +53,23 @@ export const FiltersPopup = ({ filters: filtersOuter, options, onClose, onApply 
         []
     );
 
+    const handleReset = () => {
+        setFilters({});
+        onReset();
+    };
     const handleApply = () => onApply(filters);
 
     return (
-        <Popup className={`map-filters-popup`} position={popupPosition} onClose={onClose}>
+        <Popup
+            className={`map-filters-popup ${styles.container}`}
+            position={popupPosition}
+            onClose={onClose}
+        >
             <Popup.Header>
                 <Typography variant="caption">Set job filters</Typography>
             </Popup.Header>
-            <Popup.Content>
+            <Popup.Content className={styles.content}>
+                <JobTitleControl value={filters.title} onChange={handleChange('title')} />
                 <TechSelect
                     value={filters.technologies}
                     options={options.technologies}
@@ -52,6 +77,9 @@ export const FiltersPopup = ({ filters: filtersOuter, options, onClose, onApply 
                 />
             </Popup.Content>
             <Popup.Footer className={styles.footer}>
+                <Button color="secondary" disabled={!hasFilters} onClick={handleReset}>
+                    Clear all
+                </Button>
                 <Button color="primary" onClick={handleApply}>
                     Apply
                 </Button>

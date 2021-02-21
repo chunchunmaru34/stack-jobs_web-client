@@ -24,6 +24,7 @@ export interface IFunctor<T> {
 
 export interface IMapFilters {
     technologies?: string[];
+    title?: string;
 }
 
 export type LocationJobDict = { [key: string]: IJobCard[] };

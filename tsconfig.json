@@ -13,7 +13,10 @@
         "paths": {
             "@services/*": ["./services/*"],
             "@models/*": ["./models/*"],
-            "@interfaces/*": ["./interfaces/*"]
+            "@interfaces/*": ["./interfaces/*"],
+            "@hooks/*": ["./hooks/*"],
+            "@components/*": ["./components/*"],
+            "@utils/*": ["./utils/*"]
         },
 
         "allowJs": true,

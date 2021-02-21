@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import ReactDOM from 'react-dom';
-import { Card, CardContent, Typography, IconButton, Button } from '@material-ui/core';
+import { Card, CardContent, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './Popup.css';

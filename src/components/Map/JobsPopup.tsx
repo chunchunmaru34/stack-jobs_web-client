@@ -1,9 +1,9 @@
-import { IJobCard, JobPoint } from '@interfaces/index';
-
-import { JobList } from './JobList';
-import { Popup } from 'components/Popup/Popup';
 import { useMemo } from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
+
+import { IJobCard, JobPoint } from '@interfaces/index';
+import { JobList } from '@components/JobList/JobList';
+import { Popup } from '@components/Popup/Popup';
 
 type JobsPopupType = {
     point: JobPoint;

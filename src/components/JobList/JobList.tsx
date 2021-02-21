@@ -1,9 +1,9 @@
 import React from 'react';
+import { Divider } from '@material-ui/core';
 
 import { IJobCard } from '@interfaces/index';
 
 import { JobListItem } from './JobListItem';
-import { Divider } from '@material-ui/core';
 
 export const JobList = ({
     className,

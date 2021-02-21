@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { IJobCard } from '@interfaces/index';
+import { Conditional } from '@components/Conditional';
 
 import './JobListItem.css';
-import { Conditional } from 'components/Conditional';
 
 const styles: { [key: string]: React.CSSProperties } = {
     container: {
