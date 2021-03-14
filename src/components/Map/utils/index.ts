@@ -1,14 +1,17 @@
 import { IJobCard, LocationJobDict, JobPoint } from '@interfaces/index';
 
 export const filterNoLocationItems = (
-    filter: (items: IJobCard[]) => IJobCard[],
+    filterKey: (x: string) => boolean,
+    filterValue: (items: IJobCard) => boolean,
     items: LocationJobDict
 ) =>
-    Object.keys(items).reduce((acc, locKey) => {
-        const filtered = filter(items[locKey]);
+    Object.keys(items)
+        .filter(filterKey)
+        .reduce((acc, locKey) => {
+            const filtered = items[locKey].filter(filterValue);
 
-        return filtered.length ? { ...acc, [locKey]: filtered } : acc;
-    }, {});
+            return filtered.length ? { ...acc, [locKey]: filtered } : acc;
+        }, {} as LocationJobDict);
 
 export const filterJobPoints = (filter: (items: IJobCard[]) => IJobCard[], points: JobPoint[]) =>
     points.reduce((acc, item) => {

@@ -9,7 +9,7 @@ import { JobTitleControl, TechSelect } from './Controls';
 
 type PopupProps = {
     filters: IMapFilters;
-    options: { locations: string[]; technologies: string[] };
+    options: { technologies: string[] };
     onClose: () => void;
     onApply: (filters: IMapFilters) => void;
     onReset: () => void;

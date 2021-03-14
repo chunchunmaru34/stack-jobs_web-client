@@ -30,12 +30,11 @@ export const MapFilters = ({ filters, data, onChange, onClear }: MapFiltersProps
     const styles = useStyles();
 
     const options = useMemo(() => {
-        const locations = Object.keys(data);
         const jobs = Object.values(data).flatMap((x) => x.jobs);
 
         const technologies = uniqByUsageCount(jobs.flatMap((j) => j.technologies));
 
-        return { locations, technologies };
+        return { technologies };
     }, [data]);
 
     const appliedFiltersCount = useMemo(() => countTruthyKeys(filters), [filters]);

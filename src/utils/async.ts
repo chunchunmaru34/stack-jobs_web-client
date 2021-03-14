@@ -5,7 +5,7 @@ export function wrapWithMaybe<T>(task: () => Promise<T>) {
     return async () => {
         try {
             const result = await task();
-            if (!!result) {
+            if (result) {
                 return Maybe.Just(result as NonNullable<T>);
             } else {
                 return Maybe.Nothing<T>();
